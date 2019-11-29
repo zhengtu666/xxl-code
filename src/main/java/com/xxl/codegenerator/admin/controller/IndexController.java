@@ -1,9 +1,9 @@
 package com.xxl.codegenerator.admin.controller;
 
+import com.xxl.codegenerator.admin.model.ClassInfo;
 import com.xxl.codegenerator.admin.model.ReturnT;
+import com.xxl.codegenerator.admin.util.CodeGeneratorTool;
 import com.xxl.codegenerator.admin.util.FreemarkerUtil;
-import com.xxl.codegenerator.core.CodeGeneratorTool;
-import com.xxl.codegenerator.core.model.ClassInfo;
 import freemarker.template.TemplateException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
