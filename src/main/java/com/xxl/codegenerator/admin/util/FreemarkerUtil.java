@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.net.URL;
 import java.util.Locale;
 import java.util.Map;
 
@@ -27,7 +28,7 @@ public class FreemarkerUtil {
      */
     private static Configuration freemarkerConfig = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
     static{
-        String templatePath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        String templatePath = FreemarkerUtil.class.getResource("").getPath();
         int wei = templatePath.lastIndexOf("WEB-INF/classes/");
         if (wei > -1) {
             templatePath = templatePath.substring(0, wei);
