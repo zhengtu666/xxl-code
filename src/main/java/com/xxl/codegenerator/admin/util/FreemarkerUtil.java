@@ -1,6 +1,6 @@
 package com.xxl.codegenerator.admin.util;
 
-
+import com.xxl.codegenerator.core.CodeGeneratorTool;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -34,6 +34,8 @@ public class FreemarkerUtil {
         }
 
         try {
+            File file = new File(templatePath, "xxl-code-generator");
+            logger.info(file.getPath());
             freemarkerConfig.setDirectoryForTemplateLoading(new File(templatePath, "xxl-code-generator"));
             freemarkerConfig.setNumberFormat("#");
             freemarkerConfig.setClassicCompatible(true);

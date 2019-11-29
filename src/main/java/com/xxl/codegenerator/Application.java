@@ -1,4 +1,4 @@
-package com.xxl.codegenerator.admin;
+package com.xxl.codegenerator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
