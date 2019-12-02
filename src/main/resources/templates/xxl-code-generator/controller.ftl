@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * @auther: liuhuan
- * @date: ${.now?string('yyyy-MM-dd')}
+ * @date: ${.now?string('yyyy/MM/dd')}
  * @Description: ${classInfo.classComment}控制层
  */
 @Controller

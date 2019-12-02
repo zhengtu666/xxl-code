@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  * @auther: liuhuan
- * @date: ${.now?string('yyyy-MM-dd')}
+ * @date: ${.now?string('yyyy/MM/dd')}
  * @Description: ${classInfo.classComment}实体类
  */
 public class ${classInfo.className} implements Serializable {

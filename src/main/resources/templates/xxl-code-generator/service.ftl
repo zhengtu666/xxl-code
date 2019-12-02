@@ -2,7 +2,7 @@ import java.util.Map;
 
 /**
  * @auther: liuhuan
- * @date: ${.now?string('yyyy-MM-dd')}
+ * @date: ${.now?string('yyyy/MM/dd')}
  * @Description: ${classInfo.classComment}服务接口
  */
 public interface ${classInfo.className}Service {

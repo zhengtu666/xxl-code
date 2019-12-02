@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * @auther: liuhuan
- * @date: ${.now?string('yyyy-MM-dd')}
+ * @date: ${.now?string('yyyy/MM/dd')}
  * @Description: ${classInfo.classComment}mapper
  */
 @Component
