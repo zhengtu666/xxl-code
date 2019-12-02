@@ -4,12 +4,12 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
-* ${classInfo.classComment}
-*
-* Created by xuxueli on '${.now?string('yyyy-MM-dd HH:mm:ss')}'.
-*/
+ * @auther: liuhuan
+ * @date: ${.now?string('yyyy-MM-dd')}
+ * @Description: ${classInfo.classComment}mapper
+ */
 @Component
-public interface ${classInfo.className}Dao {
+public interface ${classInfo.className}Mapper {
 
     /**
     * 新增

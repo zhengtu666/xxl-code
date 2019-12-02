@@ -1,10 +1,10 @@
 import java.util.Map;
 
 /**
-* ${classInfo.classComment}
-*
-* Created by xuxueli on '${.now?string('yyyy-MM-dd HH:mm:ss')}'.
-*/
+ * @auther: liuhuan
+ * @date: ${.now?string('yyyy-MM-dd')}
+ * @Description: ${classInfo.classComment}服务接口
+ */
 public interface ${classInfo.className}Service {
 
     /**

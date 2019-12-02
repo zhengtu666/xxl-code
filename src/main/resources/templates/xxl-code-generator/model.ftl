@@ -11,10 +11,10 @@ import java.util.Date;
 </#if>
 
 /**
-*  ${classInfo.classComment}
-*
-*  Created by xuxueli on '${.now?string('yyyy-MM-dd HH:mm:ss')}'.
-*/
+ * @auther: liuhuan
+ * @date: ${.now?string('yyyy-MM-dd')}
+ * @Description: ${classInfo.classComment}实体类
+ */
 public class ${classInfo.className} implements Serializable {
     private static final long serialVersionUID = 42L;
 

@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
+
 /**
-* ${classInfo.classComment}
-*
-* Created by xuxueli on '${.now?string('yyyy-MM-dd HH:mm:ss')}'.
-*/
+ * @auther: liuhuan
+ * @date: ${.now?string('yyyy-MM-dd')}
+ * @Description: ${classInfo.classComment}控制层
+ */
 @Controller
 public class ConfController {
 

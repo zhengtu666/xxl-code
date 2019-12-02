@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
-* ${classInfo.classComment}
-*
-* Created by xuxueli on '${.now?string('yyyy-MM-dd HH:mm:ss')}'.
-*/
+ * @auther: liuhuan
+ * @date: ${.now?string('yyyy-MM-dd')}
+ * @Description: ${classInfo.classComment}服务层
+ */
 @Service
 public class ${classInfo.className}ServiceImpl implements ${classInfo.className}Service {
 
