@@ -7,6 +7,7 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.ResourceUtils;
 
 import java.io.*;
 import java.net.URL;
@@ -34,8 +35,10 @@ public class FreemarkerUtil {
         }
 
         try {
+            String path = ResourceUtils.getURL("").getPath();
+            logger.info(path);
             File file = new File(templatePath, "xxl-code-generator");
-            logger.info(file.getPath());
+
             freemarkerConfig.setDirectoryForTemplateLoading(new File(templatePath, "xxl-code-generator"));
             freemarkerConfig.setNumberFormat("#");
             freemarkerConfig.setClassicCompatible(true);
