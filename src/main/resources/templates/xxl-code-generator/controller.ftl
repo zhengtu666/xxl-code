@@ -15,7 +15,7 @@ import java.util.Map;
  * @Description: ${classInfo.classComment}控制层
  */
 @Controller
-public class ConfController {
+public class ${classInfo.className}Controller {
 
     @Resource
     private ${classInfo.className}Service ${classInfo.className?uncap_first}Service;
