@@ -26,30 +26,8 @@ public class FreemarkerUtil {
      */
     private static Configuration freemarkerConfig = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
     static{
-        InputStream stream = FreemarkerUtil.class.getClass().getResourceAsStream("");
-        StringBuffer sb = new StringBuffer() ;
-        BufferedReader br = null ;
-        try {
-            br = new BufferedReader(new InputStreamReader(stream,"UTF-8")) ;
-            String s=null ;
-            while((s=br.readLine()) !=null){
-                sb.append(s) ;
-            }
-            br.close();
-        } catch (FileNotFoundException e) {
-            logger.error("FileNotFoundException:"+e);
-        } catch (IOException e) {
-            logger.error("IOException:"+e);
-        }finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    logger.error("close br error:" + e);
-                }
-            }
-        }
-        String templatePath = sb.toString();
+        String templatePath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+
         int wei = templatePath.lastIndexOf("WEB-INF/classes/");
         if (wei > -1) {
             templatePath = templatePath.substring(0, wei);
