@@ -1,14 +1,18 @@
-package com.xxl.codegenerator.admin.util;
+package com.xxl.codegenerator.admin.core.util;
 
-import com.xxl.codegenerator.admin.exception.CodeGenerateException;
-import com.xxl.codegenerator.admin.model.ClassInfo;
-import com.xxl.codegenerator.admin.model.FieldInfo;
+
+import com.xxl.codegenerator.admin.core.exception.CodeGenerateException;
+import com.xxl.codegenerator.admin.core.model.ClassInfo;
+import com.xxl.codegenerator.admin.core.model.FieldInfo;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author xuxueli 2018-05-02 21:10:45
@@ -48,7 +52,7 @@ public class TableParseUtil {
         }
 
         // class Comment
-        String classComment = null;
+        String classComment = "";
         if (tableSql.contains("COMMENT=")) {
             String classCommentTmp = tableSql.substring(tableSql.lastIndexOf("COMMENT=")+8).trim();
             if (classCommentTmp.contains("'") || classCommentTmp.indexOf("'")!=classCommentTmp.lastIndexOf("'")) {
@@ -63,6 +67,32 @@ public class TableParseUtil {
         List<FieldInfo> fieldList = new ArrayList<FieldInfo>();
 
         String fieldListTmp = tableSql.substring(tableSql.indexOf("(")+1, tableSql.lastIndexOf(")"));
+
+        // replave "," by "，" in comment
+        Matcher matcher = Pattern.compile("\\ COMMENT '(.*?)\\'").matcher(fieldListTmp);     // "\\{(.*?)\\}"
+        while(matcher.find()){
+
+            String commentTmp = matcher.group();
+            commentTmp = commentTmp.replaceAll("\\ COMMENT '|\\'", "");      // "\\{|\\}"
+
+            if (commentTmp.contains(",")) {
+                String commentTmpFinal = commentTmp.replaceAll(",", "，");
+                fieldListTmp = fieldListTmp.replace(commentTmp, commentTmpFinal);
+            }
+        }
+
+        // remove invalid data
+        for (Pattern pattern: Arrays.asList(
+                Pattern.compile("[\\s]*PRIMARY KEY .*(\\),|\\))"),      // remove PRIMARY KEY
+                Pattern.compile("[\\s]*UNIQUE KEY .*(\\),|\\))"),       // remove UNIQUE KEY
+                Pattern.compile("[\\s]*KEY .*(\\),|\\))")               // remove KEY
+        )) {
+            Matcher patternMatcher = pattern.matcher(fieldListTmp);
+            while(patternMatcher.find()){
+                fieldListTmp = fieldListTmp.replace(patternMatcher.group(),"");
+            }
+        }
+
         String[] fieldLineList = fieldListTmp.split(",");
         if (fieldLineList.length > 0) {
             for (String columnLine :fieldLineList) {
@@ -92,14 +122,14 @@ public class TableParseUtil {
                         fieldClass = Double.TYPE.getSimpleName();
                     } else if (columnLine.startsWith("datetime") || columnLine.startsWith("timestamp")) {
                         fieldClass = Date.class.getSimpleName();
-                    } else if (columnLine.startsWith("varchar") || columnLine.startsWith("text")) {
+                    } else if (columnLine.startsWith("varchar") || columnLine.startsWith("text") || columnLine.startsWith("char")) {
                         fieldClass = String.class.getSimpleName();
                     } else if (columnLine.startsWith("decimal")) {
                         fieldClass = BigDecimal.class.getSimpleName();
                     }
 
                     // field comment
-                    String fieldComment = null;
+                    String fieldComment = "";
                     if (columnLine.contains("COMMENT")) {
                         String commentTmp = fieldComment = columnLine.substring(columnLine.indexOf("COMMENT")+7).trim();	// '用户ID',
                         if (commentTmp.contains("'") || commentTmp.indexOf("'")!=commentTmp.lastIndexOf("'")) {

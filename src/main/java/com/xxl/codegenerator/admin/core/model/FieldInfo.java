@@ -1,4 +1,4 @@
-package com.xxl.codegenerator.admin.model;
+package com.xxl.codegenerator.admin.core.model;
 
 /**
  * field info

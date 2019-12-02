@@ -1,4 +1,3 @@
-import com.xxl.conf.admin.core.model.XxlConfNode;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +14,7 @@ public interface ${classInfo.className}Dao {
     /**
     * 新增
     */
-    public void insert(@Param("${classInfo.className?uncap_first}") ${classInfo.className} ${classInfo.className?uncap_first});
+    public int insert(@Param("${classInfo.className?uncap_first}") ${classInfo.className} ${classInfo.className?uncap_first});
 
     /**
     * 删除

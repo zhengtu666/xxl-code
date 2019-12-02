@@ -1,16 +1,16 @@
 package com.xxl.codegenerator.admin.util;
 
-
+import com.xxl.codegenerator.admin.core.CodeGeneratorTool;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.ResourceUtils;
 
-import java.io.*;
-import java.net.URL;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.Locale;
 import java.util.Map;
 
@@ -28,18 +28,13 @@ public class FreemarkerUtil {
     private static Configuration freemarkerConfig = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
     static{
         String templatePath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-
         int wei = templatePath.lastIndexOf("WEB-INF/classes/");
         if (wei > -1) {
             templatePath = templatePath.substring(0, wei);
         }
 
         try {
-            String path = ResourceUtils.getURL("").getPath();
-            logger.info(path);
-            File file = new File(templatePath, "xxl-code-generator");
-
-            freemarkerConfig.setDirectoryForTemplateLoading(new File(templatePath, "xxl-code-generator"));
+            freemarkerConfig.setDirectoryForTemplateLoading(new File(templatePath, "templates/xxl-code-generator"));
             freemarkerConfig.setNumberFormat("#");
             freemarkerConfig.setClassicCompatible(true);
             freemarkerConfig.setDefaultEncoding("UTF-8");
