@@ -113,14 +113,14 @@ public class TableParseUtil {
                     columnLine = columnLine.substring(columnLine.indexOf("`")+1).trim();	// int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
                     String fieldClass = Object.class.getSimpleName();
                     if (columnLine.startsWith("int") || columnLine.startsWith("tinyint") || columnLine.startsWith("smallint")) {
-                        fieldClass = Integer.TYPE.getSimpleName();
+                        fieldClass = "Integer";
                     } else if (columnLine.startsWith("bigint")) {
-                        fieldClass = Long.TYPE.getSimpleName();
+                        fieldClass = "Long";
                     } else if (columnLine.startsWith("float")) {
-                        fieldClass = Float.TYPE.getSimpleName();
+                        fieldClass = "Float";
                     } else if (columnLine.startsWith("double")) {
-                        fieldClass = Double.TYPE.getSimpleName();
-                    } else if (columnLine.startsWith("datetime") || columnLine.startsWith("timestamp")) {
+                        fieldClass = "Double";
+                    } else if (columnLine.startsWith("date") || columnLine.startsWith("datetime")|| columnLine.startsWith("timestamp")) {
                         fieldClass = Date.class.getSimpleName();
                     } else if (columnLine.startsWith("varchar") || columnLine.startsWith("text") || columnLine.startsWith("char")) {
                         fieldClass = String.class.getSimpleName();
