@@ -19,35 +19,6 @@
     </#if>
     </sql>
 
-    <insert id="insert" >
-        INSERT INTO ${classInfo.tableName} (
-        <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
-        <#list classInfo.fieldList as fieldItem >
-            <#if fieldItem.columnName != "Id" >
-            `${fieldItem.columnName}`<#if fieldItem_has_next>,</#if>
-            </#if>
-        </#list>
-        </#if>
-        )
-        VALUES(
-        <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
-        <#list classInfo.fieldList as fieldItem >
-        <#if fieldItem.columnName != "Id" >
-            <#if fieldItem.columnName="AddTime" || fieldItem.columnName="UpdateTime" >
-            NOW()<#if fieldItem_has_next>,</#if>
-            <#else>
-            ${r"#{"}${fieldItem.fieldName}${r"}"}<#if fieldItem_has_next>,</#if>
-            </#if>
-        </#if>
-        </#list>
-        </#if>
-        )
-    </insert>
-
-    <delete id="delete" parameterType="long" >
-        DELETE FROM ${classInfo.tableName}
-        WHERE `id` = ${r"#{id}"}
-    </delete>
 
 
 </mapper>
